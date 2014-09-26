@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :entries 
+  resources :timelines
 
   root 'timeline#index'
   get 'timeline/index'
