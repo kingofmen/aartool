@@ -1,5 +1,12 @@
 class TimelinesController < ApplicationController
+  def destroy 
+    @timeline = Timeline.find(params[:id])
+    @timeline.destroy
+    redirect_to timelines_path 
+  end 
+
   def index
+    @timelines = Timeline.all
   end
 
   def new

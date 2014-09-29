@@ -4,5 +4,26 @@
 
 <p> Starting date: <%= @timeline.start_date.inspect %> </p> 
 
+<p> <ul>
+<% @timeline.timeline_entries.each do |entry| %>
+  <li> 
+    <%= entry.short_title %> 
+  </li>
+<% end %>
+</ul></p>
+
+<h2> Add an entry: </h2>
+<%= form_for ([@timeline, @timeline.timeline_entries.build]) do |f| %>
+  <%= f.label :title %> <br/>
+  <%= f.text_field :short_title %> <br/>
+  <%= f.label :description %> <br/>
+  <%= f.text_area :long_description %> <br/>
+  <%= f.label :date %><br>
+  <%= select_date Date.today, prefix: :time %> <br/>
+  <%= f.submit %>
+<% end %> 
+
 <p> Ending date: <%= @timeline.end_date.inspect %> </p> 
+
+<p> <%= link_to 'Delete this timeline', timeline_path(@timeline), method: :delete %> </p> 
  
