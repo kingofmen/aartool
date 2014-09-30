@@ -3,8 +3,8 @@ Rails.application.routes.draw do
     resources :timeline_entries
   end 
 
-  root 'timeline#index'
-  get 'timeline/index'
+  root 'timelines#index'
+  get 'timelines/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

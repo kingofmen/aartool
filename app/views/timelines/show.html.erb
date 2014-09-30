@@ -1,3 +1,13 @@
+<script type="text/javascript">
+   function toggle_visibility(id) {
+       var e = document.getElementById(id);
+       if(e.style.display == 'block')
+          e.style.display = 'none';
+       else
+          e.style.display = 'block';
+   }
+</script>
+
 <h1>
   <strong> <%= @timeline.short_title %> </strong>
 </h1>
@@ -5,9 +15,9 @@
 <p> Starting date: <%= @timeline.start_date.inspect %> </p> 
 
 <p> <ul>
-<% @timeline.timeline_entries.each do |entry| %>
-  <li> 
-    <%= entry.short_title %> 
+<% @sorted_entries.each do |entry| %>
+  <li onclick="toggle_visibility(<%= entry.id %>)" > 
+    <%= entry.time %> : <strong> <%= entry.short_title %> </strong> <div id="<%= entry.id %>" style="display:none"> <%= entry.long_description %> </div> 
   </li>
 <% end %>
 </ul></p>

@@ -20,6 +20,7 @@ class TimelinesController < ApplicationController
 
   def show
     @timeline = Timeline.find(params[:id])
+    @sorted_entries = @timeline.timeline_entries.sort_by &:time
   end
 
   private
