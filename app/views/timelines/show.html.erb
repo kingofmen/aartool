@@ -17,7 +17,11 @@
 <p> <ul>
 <% @sorted_entries.each do |entry| %>
   <li onclick="toggle_visibility(<%= entry.id %>)" > 
-    <%= entry.time %> : <strong> <%= entry.short_title %> </strong> <div id="<%= entry.id %>" style="display:none"> <%= entry.long_description %> </div> 
+    <%= entry.time %> : <strong> <%= entry.short_title %> </strong> 
+    <div id="<%= entry.id %>" style="display:none"> 
+       <%= entry.long_description %> <br/>
+       <%= link_to 'Delete', timeline_timeline_entry_path(@timeline, entry), method: :delete %>
+    </div> 
   </li>
 <% end %>
 </ul></p>

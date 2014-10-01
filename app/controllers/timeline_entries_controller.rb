@@ -6,6 +6,12 @@ class TimelineEntriesController < ApplicationController
     redirect_to timeline_path(@timeline)
   end
 
+  def destroy
+    @timeline = Timeline.find(params[:timeline_id])
+    @entry = @timeline.timeline_entries.find(params[:id])
+    @entry.destroy
+    redirect_to timeline_path(@timeline)
+  end
 
 private
   def process_params
