@@ -1,8 +1,8 @@
 class TimelineEntriesController < ApplicationController
   def create
     @timeline = Timeline.find(params[:timeline_id])
-    @timeline_entry = @timeline.timeline_entries.create(process_params)
-    @timeline_entry.save
+    @entry = @timeline.timeline_entries.create(process_params)
+    @entry.save
     redirect_to timeline_path(@timeline)
   end
 
@@ -10,6 +10,18 @@ class TimelineEntriesController < ApplicationController
     @timeline = Timeline.find(params[:timeline_id])
     @entry = @timeline.timeline_entries.find(params[:id])
     @entry.destroy
+    redirect_to timeline_path(@timeline)
+  end
+
+  def edit
+    @timeline = Timeline.find(params[:timeline_id])
+    @entry = @timeline.timeline_entries.find(params[:id])
+  end
+
+  def update
+    @timeline = Timeline.find(params[:timeline_id])
+    @entry = @timeline.timeline_entries.find(params[:id])
+    @entry.update(process_params)
     redirect_to timeline_path(@timeline)
   end
 

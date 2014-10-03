@@ -1,0 +1,12 @@
+
+
+<%= form_for [@timeline, @entry], method: :patch do |f| %>
+  <%= f.label :title %> <br/>
+  <%= f.text_field :short_title %> <br/>
+  <%= f.label :description %> <br/>
+  <%= f.text_area :long_description %> <br/>
+  <%= f.label :date %><br>
+  <%= select_date @entry.time, prefix: :time %> <br/>
+  <%= f.submit %>
+<% end %> 
+

@@ -21,6 +21,7 @@
     <div id="<%= entry.id %>" style="display:none"> 
        <%= entry.long_description %> <br/>
        <%= link_to 'Delete', timeline_timeline_entry_path(@timeline, entry), method: :delete %>
+       <%= link_to 'Edit', edit_timeline_timeline_entry_path(@timeline, entry) %>
     </div> 
   </li>
 <% end %>
